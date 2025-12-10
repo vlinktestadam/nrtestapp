@@ -10,6 +10,7 @@ import { StatusBar, useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import NavigationStack from './src/navigation/NavigationStack';
 import { AuthProvider } from './src/context/AuthContext';
+import { ToastProvider } from './src/context/ToastContext';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -18,7 +19,9 @@ function App() {
     <SafeAreaProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <AuthProvider>
-        <NavigationStack />
+        <ToastProvider>
+          <NavigationStack />
+        </ToastProvider>
       </AuthProvider>
     </SafeAreaProvider>
   );
